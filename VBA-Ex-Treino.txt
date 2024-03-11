@@ -1,0 +1,162 @@
+Sub Exercício()
+'Comece o exercício aqui
+Dim lista As Variant
+Dim i As Integer
+Dim valor As Double
+
+valor = 1.3
+
+   For i = 5 To 1283
+lista = Split(Workbooks("svba-exercicio-texto-para-colunas.xlsm").Worksheets("SVBA_Exercicio").Range("A" & i), "-")
+Workbooks("svba-exercicio-texto-para-colunas.xlsm").Worksheets("SVBA_Exercicio").Range("C" & i) = lista(0)
+ Workbooks("svba-exercicio-texto-para-colunas.xlsm").Worksheets("SVBA_Exercicio").Range("D" & i) = lista(1)
+  Workbooks("svba-exercicio-texto-para-colunas.xlsm").Worksheets("SVBA_Exercicio").Range("E" & i) = lista(2) & "" & lista(3)
+     Workbooks("svba-exercicio-texto-para-colunas.xlsm").Worksheets("SVBA_Exercicio").Range("F" & i) = lista(4)
+       Workbooks("svba-exercicio-texto-para-colunas.xlsm").Worksheets("SVBA_Exercicio").Range("G" & i) = lista(0) * valor
+         
+    Next i
+
+End Sub
+
+Sub teste()
+x = 0
+Do
+x = x + 1
+MsgBox x
+
+Loop While x < 3
+End Sub
+
+
+Sub StanderUser()
+
+Dim user As Double
+Dim result As Double
+
+user = 0
+
+    Do
+result = InputBox("some seus numeros (ou deixe em branco para encerrar a soma):")
+user = user + CDbl(result)
+
+Loop Until result = "0"
+
+MsgBox ("O resultado é " & user)
+
+
+
+
+
+End Sub
+
+
+Sub testeIA()
+ Dim soma As Double
+    Dim numero As Double
+    
+    soma = 0
+    
+    Do
+        numero = InputBox("Digite um número (ou preencha 0 e encerre):")
+        
+        If IsNumeric(numero) Then
+            soma = soma + CDbl(numero)
+        ElseIf numero <> "" Then
+            MsgBox "Valor inválido. Tente novamente."
+        End If
+        
+    Loop Until numero = "0"
+    
+    MsgBox "A soma dos números é: " & soma
+End Sub
+
+
+Function MediaFinal()
+'Comece o exercício aqui
+
+
+
+
+End Function
+
+
+Sub Exercício()
+Dim nota1 As Double
+Dim nota2 As Double
+Dim nota3 As Double
+Dim media As Double
+Dim resultado As String
+
+
+nota1 = InputBox("Nota da primeira avaliação")
+nota2 = InputBox("Nota da Segunda avaliação")
+nota3 = InputBox("Nota da Terceira avaliação")
+
+media = (nota1 + nota2 + nota3) / 3
+
+If media >= 6 Then
+resultado = "passou"
+Else
+resultado = "reprovou"
+
+End If
+
+MsgBox "A media do aluno é" & media & "A situação dele é " & resultado
+End Sub
+
+
+
+Sub Exercicio2()
+
+Dim nota1 As Double
+Dim nota2 As Double
+Dim nota3 As Double
+Dim media As Double
+Dim resultado As String
+Dim aluno As Object
+Dim linhanota As String
+Dim colunaA As String
+Dim foundline As Integer
+
+
+
+colunaA = Workbooks("svba-exercicio-media-final.xlsm").Worksheets("SVBA_Exercicio").Range("A2")
+
+Set aluno = Workbooks("svba-exercicio-media-final.xlsm").Worksheets("SVBA_Exercicio").Range("F1:F11").Find(colunaA)
+
+foundline = aluno.Row
+
+
+nota1 = Workbooks("svba-exercicio-media-final.xlsm").Worksheets("SVBA_Exercicio").Range("B3")
+
+nota2 = Workbooks("svba-exercicio-media-final.xlsm").Worksheets("SVBA_Exercicio").Range("B4")
+
+nota3 = Workbooks("svba-exercicio-media-final.xlsm").Worksheets("SVBA_Exercicio").Range("B5")
+
+
+media = (nota1 + nota2 + nota3) / 3
+
+Workbooks("svba-exercicio-media-final.xlsm").Worksheets("SVBA_Exercicio").Range("B6") = media
+
+
+If media >= 6 Then
+resultado = "passou"
+ElseIf media >= 3 >= 5 Then
+resultado = "recuperacao"
+Else
+resultado = "reprovou"
+End If
+Workbooks("svba-exercicio-media-final.xlsm").Worksheets("SVBA_Exercicio").Range("B7") = resultado
+
+
+Workbooks("svba-exercicio-media-final.xlsm").Worksheets("SVBA_Exercicio").Range("G" & foundline) = resultado
+Workbooks("svba-exercicio-media-final.xlsm").Worksheets("SVBA_Exercicio").Range("H" & foundline) = media
+   
+End Sub
+
+
+
+
+
+
+
