@@ -1,0 +1,57 @@
+Sub BlackFriday()
+
+Dim foundline As Integer
+Dim reajuste As Double
+Dim desconto As Double
+Dim preco As Double
+Dim i As Integer
+Dim aumentado As Double
+
+
+
+
+
+For i = 3 To 22
+
+preco = Workbooks("svba-exercicio-select-case.xlsm").Worksheets("SVBA_Exercicio").Range("B" & i)
+aumentado = Workbooks("svba-exercicio-select-case.xlsm").Worksheets("SVBA_Exercicio").Range("D" & i)
+
+If preco >= 25 And preco < 50 Then
+reajuste = preco * 0.15
+
+ElseIf preco >= 51 And preco < 100 Then
+reajuste = preco * 0.25
+
+Else
+reajuste = preco * 0.35
+
+End If
+
+
+If aumentado >= 25 And aumentado < 75 Then
+desconto = aumentado * 0.1
+ElseIf aumentado >= 76 And aumentado < 125 Then
+desconto = aumentado * (0.17 + 0.05)
+ElseIf aumentado >= 126 And aumentado < 150 Then
+desconto = aumentado * 0.25
+Else
+
+End If
+
+
+
+
+Workbooks("svba-exercicio-select-case.xlsm").Worksheets("SVBA_Exercicio").Range("E" & i) = desconto
+
+Workbooks("svba-exercicio-select-case.xlsm").Worksheets("SVBA_Exercicio").Range("C" & i) = reajuste
+
+
+If Workbooks("svba-exercicio-select-case.xlsm").Worksheets("SVBA_Exercicio").Range("F" & i) < 0 Then
+Range("F" & i).Interior.Color = vbRed
+End If
+
+Next i
+
+
+End Sub
+
